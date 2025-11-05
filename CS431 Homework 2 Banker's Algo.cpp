@@ -1,12 +1,11 @@
-// https://www.geeksforgeeks.org/operating-systems/bankers-algorithm-in-operating-system-2/
-#include <iostream>
-#include <vector>
-using namespace std;
-// Number of processes
-const int P = 5;
+// https://www.geeksforgeeks.org/operating-systems/program-bankers-algorithm-set-1-safety-algorithm/
 
-// Number of resources
-const int R = 3;
+#include<iostream>
+using namespace std;
+
+
+const int P = 5;// Number of processes
+const int R = 3;// Number of resources
 
 // Function to find the need of each process
 void calculateNeed(int need[P][R], int maxm[P][R],
@@ -19,10 +18,17 @@ void calculateNeed(int need[P][R], int maxm[P][R],
             // Need of instance = maxm instance -
             //                    allocated instance
             need[i][j] = maxm[i][j] - allot[i][j];
+    // Need Matrix -- me :o)
+    cout << "Need Matrix\n";
+    cout << "Process\t" << "Resource A\tResource B\tResource C\n\n";
+    for (int i = 0; i < P; i++) {
+        
+        cout << "P" << i << "\t" << need[i][0] << "\t\t" << need[i][1] << "\t\t" << need[i][2] << endl;
+    }
 }
 
 // Function to find the system is in safe state or not
-bool isSafe(int processes[], char avail[], int maxm[][R],
+bool isSafe(int processes[], int avail[], int maxm[][R],
     int allot[][R])
 {
     int need[P][R];
@@ -109,7 +115,7 @@ int main()
     int processes[] = { 1, 2, 3, 4, 5 };
 
     // Available instances of resources
-    char avail[] = {'A', 'B', 'C'};
+    int avail[] = { 3, 3, 2 };
 
     // Maximum R that can be allocated
     // to processes
@@ -128,6 +134,6 @@ int main()
 
     // Check system is in safe state or not
     isSafe(processes, avail, maxm, allot);
-    cout << endl;
+
     return 0;
 }
