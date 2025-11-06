@@ -125,6 +125,7 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
 // Driver code
 int main()
 {
+    // First test case with unsafe state
     int processes[] = { 1, 2, 3, 4, 5 };
 
     // Available instances of resources
@@ -147,6 +148,31 @@ int main()
 
     // Check system is in safe state or not
     isSafe(processes, avail, maxm, allot);
+
+
+	// Second test case with unsafe state
+    int processes2[] = { 6, 7, 8, 9, 10 };
+
+    // Available instances of resources
+    int  avail2[] = { 3, 3, 2 };
+
+    // Maximum R that can be allocated
+    // to processes
+    int maxm2[][R] = { {7, 5, 3},
+                     {3, 2, 2},
+                     {9, 0, 2},
+                     {2, 2, 2},
+                     {4, 3, 3} };
+
+    // Resources allocated to processes
+    int allot2[][R] = { {1, 1, 0},
+                      {2, 0, 0},
+                      {3, 0, 2},
+                      {0, 1, 1},
+                      {0, 0, 2} };
+
+    // Check system is in safe state or not
+    isSafe(processes2, avail2, maxm2, allot2);
 
     return 0;
 }
