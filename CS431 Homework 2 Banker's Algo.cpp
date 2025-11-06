@@ -56,8 +56,10 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
         // whose needs can be satisfied with current
         // work[] resources.
         bool found = false;
+
         for (int p = 0; p < P; p++)
         {
+
             // First check if a process is finished,
             // if no, go for next condition
             if (finish[p] == 0)
@@ -82,15 +84,23 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
                     }
                     cout << endl;
 
+                  
                     // Add this process to safe sequence.
                     safeSeq[count++] = p;
 
                     // Mark this p as finished
                     finish[p] = 1;
-
+                    for (int p = 0; p < P; p++) {  // finish vector -- me :o)
+                        cout << finish[p] << " ";
+                    }
                     found = true;
+                    
                 }
+
             }
+
+
+           
         }
 
         // If we could not find a next process in safe
