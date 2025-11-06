@@ -46,7 +46,7 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
     int work[R];
     for (int i = 0; i < R; i++)
         work[i] = avail[i];
-
+   
     // While all processes are not finished
     // or system is not in safe state.
     int count = 0;
@@ -71,13 +71,16 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
                         break;
 
                 // If all needs of p were satisfied.
-                if (j == R)
-                {
-                    // Add the allocated resources of
+                if (j == R){
+                    cout << "\nSelected Process: P" << p << "\nWork Vector: ";
+                // Add the allocated resources of
                     // current P to the available/work
                     // resources i.e.free the resources
-                    for (int k = 0; k < R; k++)
+					for (int k = 0; k < R; k++) {  // work vector -- me :o)
                         work[k] += allot[p][k];
+                        cout << work[k] << " ";
+                    }
+                    cout << endl;
 
                     // Add this process to safe sequence.
                     safeSeq[count++] = p;
@@ -94,17 +97,17 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
         // sequence.
         if (found == false)
         {
-            cout << "System is not in safe state";
+            cout << "\nSystem is not in safe state";
             return false;
         }
     }
 
     // If system is in safe state then
     // safe sequence will be as below
-    cout << "System is in safe state.\nSafe"
+    cout << "\nSystem is in safe state.\nSafe"
         " sequence is: ";
     for (int i = 0; i < P; i++)
-        cout << safeSeq[i] << " ";
+        cout << "P" << safeSeq[i] << " ";
 
     return true;
 }
