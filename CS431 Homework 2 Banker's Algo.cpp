@@ -18,8 +18,8 @@ void calculateNeed(int need[P][R], int maxm[P][R],
             // Need of instance = maxm instance -
             //                    allocated instance
             need[i][j] = maxm[i][j] - allot[i][j];
-    // Need Matrix -- me :o)
-    cout << "Need Matrix\n";
+    // Need Matrix
+    cout << "\nNeed Matrix\n";
     cout << "Process\t" << "Resource A\tResource B\tResource C\n\n";
     for (int i = 0; i < P; i++) {
         
@@ -28,10 +28,10 @@ void calculateNeed(int need[P][R], int maxm[P][R],
 }
 
 // Function to find the system is in safe state or not
-bool isSafe(int processes[], int avail[], int maxm[][R],
+bool isSafe(int processes[], int avail[], int maxm[][R],    
     int allot[][R])
 {
-    int need[P][R];
+    int need[P][R]; 
 
     // Function to calculate need matrix
     calculateNeed(need, maxm, allot);
@@ -69,7 +69,7 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
                 // than work
                 int j;
                 for (j = 0; j < R; j++)
-                    if (need[p][j] > work[j])
+                    if (need[p][j] > work[j]) // 
                         break;
 
                 // If all needs of p were satisfied.
@@ -78,7 +78,7 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
                 // Add the allocated resources of
                     // current P to the available/work
                     // resources i.e.free the resources
-					for (int k = 0; k < R; k++) {  // work vector -- me :o)
+					for (int k = 0; k < R; k++) {  // work vector
                         work[k] += allot[p][k];
                         cout << work[k] << " ";
                     }
@@ -90,7 +90,7 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
 
                     // Mark this p as finished
                     finish[p] = 1;
-                    for (int p = 0; p < P; p++) {  // finish vector -- me :o)
+                    for (int p = 0; p < P; p++) {  // finish vector
                         cout << finish[p] << " ";
                     }
                     found = true;
